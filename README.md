@@ -1,10 +1,10 @@
 # RT Dias 3D Store Management
 
-🇺🇸 English
+## English
 
-## About
+### About
 
-RT Dias 3D Store Management is a Full Stack project developed to manage a local store that sells utility products and provides 3D printing services.
+RT Dias 3D Store Management is a full stack project developed to manage a local store that sells utility products and provides 3D printing services.
 
 The project is being built step by step as part of my learning journey in:
 
@@ -13,58 +13,73 @@ The project is being built step by step as part of my learning journey in:
 - Spring Boot
 - React
 
-Current stage:
-- ✅ Database modeling
-- ⏳ Java Console Application
-- ⏳ Spring Boot API
-- ⏳ React Frontend
+### Current Stage
 
-## Technologies
+- Database modeling
+- Version 1: Java console application
+- Version 2: Spring Boot API
+- React frontend: coming soon
 
-- Java
-- MySQL
-- Spring Boot (coming soon)
-- React (coming soon)
-
-## Project Structure
-
-```
-database/
-    schema.sql
-```
-
----
-
-# 🇧🇷 Português
-
-## Sobre
-
-RT Dias 3D Store Management é um projeto Full Stack desenvolvido para gerenciar uma loja local que vende utilidades e oferece serviços de impressão 3D.
-
-O projeto está sendo desenvolvido como parte da minha evolução em:
+### Technologies
 
 - Java
 - MySQL
 - Spring Boot
 - React
 
-Etapa atual:
+### Project Structure
 
-- ✅ Modelagem do banco de dados
-- ⏳ Aplicação Java Console
-- ⏳ API Spring Boot
-- ⏳ Frontend React
+```text
+backendV1/
+    Backend/
+        src/
+backendV2/
+    system/
+        src/
+        pom.xml
+database/
+    schema.sql
+```
 
-## Tecnologias
+---
+
+## Portugues
+
+### Sobre
+
+RT Dias 3D Store Management e um projeto full stack desenvolvido para gerenciar uma loja local que vende utilidades e oferece servicos de impressao 3D.
+
+O projeto esta sendo desenvolvido como parte da minha evolucao em:
 
 - Java
 - MySQL
-- Spring Boot (em desenvolvimento)
-- React (em desenvolvimento)
+- Spring Boot
+- React
 
-## Estrutura do projeto
+### Etapa Atual
 
-```
+- Modelagem do banco de dados
+- Versao 1: aplicacao Java console
+- Versao 2: API Spring Boot
+- Frontend React: em desenvolvimento
+
+### Tecnologias
+
+- Java
+- MySQL
+- Spring Boot
+- React
+
+### Estrutura do Projeto
+
+```text
+backendV1/
+    Backend/
+        src/
+backendV2/
+    system/
+        src/
+        pom.xml
 database/
     schema.sql
 ```

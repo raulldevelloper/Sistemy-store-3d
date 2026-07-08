@@ -1,28 +1,41 @@
 package com.projectstore.rtdias3d.controller;
 
+import com.projectstore.rtdias3d.dtoS.ClienteDTO;
 import com.projectstore.rtdias3d.entity.Cliente;
-import com.projectstore.rtdias3d.repository.ClienteRepository;
+import com.projectstore.rtdias3d.service.ClienteService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
+@RequiredArgsConstructor
 public class ClienteController {
 
-    private final ClienteRepository clienteRepository;
-
-    public ClienteController(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
-    }
+    private final ClienteService service;
 
     @GetMapping
-    public List<Cliente> listar() {
-        return clienteRepository.findAll();
+    public List<Cliente> listar(){
+        return service.listarTodos();
     }
 
     @PostMapping
-    public Cliente salvar(@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public Cliente salvar(@RequestBody @Valid ClienteDTO dto){
+        return service.salvar(dto);
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+    @PutMapping("/{id}")
+    public Cliente atualizar(@PathVariable Integer id,
+                             @RequestBody @Valid ClienteDTO dto){
+
+        return service.atualizar(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Integer id){
+        service.deletar(id);
     }
 }

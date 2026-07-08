@@ -1,28 +1,41 @@
 package com.projectstore.rtdias3d.controller;
 
+import com.projectstore.rtdias3d.dtoS.ProdutoDTO;
 import com.projectstore.rtdias3d.entity.Produto;
-import com.projectstore.rtdias3d.repository.ProdutoRepository;
+import com.projectstore.rtdias3d.service.ProdutoService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/produtos")
+@RequiredArgsConstructor
 public class ProdutoController {
 
-    private final ProdutoRepository produtoRepository;
-
-    public ProdutoController(ProdutoRepository produtoRepository) {
-        this.produtoRepository = produtoRepository;
-    }
+    private final ProdutoService service;
 
     @GetMapping
-    public List<Produto> listar() {
-        return produtoRepository.findAll();
+    public List<Produto> listar(){
+        return service.listarTodos();
     }
 
     @PostMapping
-    public Produto salvar(@RequestBody Produto produto) {
-        return produtoRepository.save(produto);
+    public Produto salvar(@RequestBody @Valid ProdutoDTO dto){
+        return service.salvar(dto);
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+    @PutMapping("/{id}")
+    public Produto atualizar(@PathVariable Integer id,
+                             @RequestBody @Valid ProdutoDTO dto){
+
+        return service.atualizar(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Integer id){
+        service.deletar(id);
     }
 }

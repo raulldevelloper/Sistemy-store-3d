@@ -1,28 +1,41 @@
 package com.projectstore.rtdias3d.controller;
 
+import com.projectstore.rtdias3d.dtoS.ItemPedidoDTO;
 import com.projectstore.rtdias3d.entity.ItemPedido;
-import com.projectstore.rtdias3d.repository.ItemPedidoRepository;
+import com.projectstore.rtdias3d.service.ItemPedidoService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/itens")
+@RequiredArgsConstructor
 public class ItemPedidoController {
 
-    private final ItemPedidoRepository itemPedidoRepository;
-
-    public ItemPedidoController(ItemPedidoRepository itemPedidoRepository) {
-        this.itemPedidoRepository = itemPedidoRepository;
-    }
+    private final ItemPedidoService service;
 
     @GetMapping
-    public List<ItemPedido> listar() {
-        return itemPedidoRepository.findAll();
+    public List<ItemPedido> listar(){
+        return service.listarTodos();
     }
 
     @PostMapping
-    public ItemPedido salvar(@RequestBody ItemPedido itemPedido) {
-        return itemPedidoRepository.save(itemPedido);
+    public ItemPedido salvar(@RequestBody @Valid ItemPedidoDTO dto){
+        return service.salvar(dto);
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    @PutMapping("/{id}")
+    public ItemPedido atualizar(@PathVariable Integer id,
+                                @RequestBody @Valid ItemPedidoDTO dto){
+
+        return service.atualizar(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Integer id){
+        service.deletar(id);
     }
 }

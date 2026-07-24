@@ -50,7 +50,11 @@ public class UsuarioService implements UserDetailsService {
 
 
         // primeiro usuário será admin
-        usuario.setRole("ADMIN");
+        if (repository.count() == 0) {
+            usuario.setRole("ADMIN");
+        } else {
+            usuario.setRole("USER");
+        }
 
 
         return repository.save(usuario);
